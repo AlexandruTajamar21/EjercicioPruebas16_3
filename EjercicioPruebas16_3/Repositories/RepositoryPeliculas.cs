@@ -34,6 +34,15 @@ namespace EjercicioPruebas16_3.Repositories
             return this.context.Peliculas.Where(x => x.IdPelicula == idPelicula).FirstOrDefault();
         }
 
+        internal List<Genero> GetGeneros()
+        {
+            return this.context.Generos.ToList();
+        }
+        internal List<Nacionalidad> GetNacionalidades()
+        {
+            return this.context.Nacionalidades.ToList();
+        }
+
         public void InsertPelicula(int idPelicula, int idDistribuidor, int idGenero,
                                     string Titulo, int idNacionalidad, string Argumento
                                     ,string Foto, DateTime FechaEstreno, string Actores, string Duracion)
@@ -75,6 +84,7 @@ namespace EjercicioPruebas16_3.Repositories
         {
             Pelicula pelicula = this.FindPelicula(idPelicula);
             this.context.Peliculas.Remove(pelicula);
+            this.context.SaveChanges();
         }
     }
 }

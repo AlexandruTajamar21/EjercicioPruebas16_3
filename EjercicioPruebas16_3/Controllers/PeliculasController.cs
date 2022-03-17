@@ -25,6 +25,21 @@ namespace EjercicioPruebas16_3.Controllers
             return peliculas;
         }
 
+        [HttpGet]
+        [Route("[action]")]
+        public ActionResult<List<Genero>> GetGeneros()
+        {
+            List<Genero> generos = this.repo.GetGeneros();
+            return generos;
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public ActionResult<List<Nacionalidad>> GetNacionalidades()
+        {
+            List<Nacionalidad> nacionalidades = this.repo.GetNacionalidades();
+            return nacionalidades;
+        }
+
         [HttpGet("{id}")]
         public ActionResult<Pelicula> GetPelicula(int id)
         {
@@ -56,10 +71,10 @@ namespace EjercicioPruebas16_3.Controllers
             return Ok();
         }
 
-        [HttpDelete("{idPelicula}")]
-        public void DeletePelicula(int idPelicula)
+        [HttpDelete("{id}")]
+        public void DeletePelicula(int id)
         {
-            this.repo.DeletePelicula(idPelicula);
+            this.repo.DeletePelicula(id);
         }
 
         [HttpPut]
